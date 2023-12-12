@@ -116,5 +116,5 @@
               name="Patients"
               parent="menu_hospital_operations"
               action="action_hospital_patient"
-              sequence="14"/>
+              sequence="10"/>
 </odoo>

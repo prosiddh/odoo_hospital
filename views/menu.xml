@@ -3,22 +3,34 @@
 <odoo>
     <menuitem id="menu_hospital_root"
               name="Hospital"
-              sequence="10" />
+              sequence="10"/>
 
     <menuitem id="menu_hospital_operations"
               name="Operation"
               parent="menu_hospital_root"
-              sequence="11" />
+              sequence="10"/>
 
     <menuitem id="menu_hospital_master_data"
               name="Master Data"
               parent="menu_hospital_root"
               action="action_hospital_patient"
-              sequence="15" />
+              sequence="10"/>
 
     <menuitem id="menu_hospital_doctor"
               name="Doctors"
               parent="menu_hospital_master_data"
               action="action_hospital_patient"
-              sequence="13" />
+              sequence="10"/>
+
+<!--    <menuitem id="hospital_lab"-->
+<!--              name="Lab"-->
+<!--              parent="menu_hospital_root"-->
+<!--              action="action_lab"-->
+<!--              sequence="10"/>-->
+
+    <menuitem id="hospital_lab"
+              name="Lab"
+              parent="menu_hospital_root"
+              action="action_lab"
+              sequence="10"/>
 </odoo>

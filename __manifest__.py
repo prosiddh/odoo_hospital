@@ -7,10 +7,12 @@
     'depends':['mail'],
     'data':[
         'security\ir.model.access.csv',
+        'security\security_access_data.xml',
         'data\sequence.xml',
         'views\menu.xml',
         'views\patient.xml',
         'views\doctor.xml',
+        'views\lab.xml',
         'wizards\cancel_appointment.xml',
         'reports\patient_template.xml',
         'reports\hospital_report.xml',

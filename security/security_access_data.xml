@@ -1,26 +1,30 @@
 <?xml version= "1.0" encoding="utf-8"?>
 
 <odoo>
-
     <record model="ir.module.category" id="module_category_hospital">
         <field name="name">Hospital Management</field>
         <field name="description">Category for Hospital</field>
         <field name="sequence">45</field>
     </record>
 
+    <!--category for lab assistent-->
     <record id="hospital_lab_group" model="res.groups">
-        <field name="name">Lab Assistant</field>
+        <field name="name">Lab Assistant </field>
         <field name="category_id" ref="module_category_hospital"/>
     </record>
 
+    <!--category for Doctor-->
     <record id="hospital_doctor_group" model="res.groups">
         <field name="name">Doctor</field>
+        <field name="category_id" ref="module_category_hospital"/>
     </record>
 
+    <!--category for Manager-->
     <record id="hospital_manager_group" model="res.groups">
         <field name="name">Manager</field>
+        <field name="category_id" ref="module_category_hospital"/>
+<!--        <field name="implied_ids" eval="[(4,ref('hospital_doctor_group')]"/>-->
     </record>
-
 
     <record id="access_for_doctor" model="ir.rule">
         <field name="name">Access Patient List</field>
@@ -33,7 +37,6 @@
         <field name="model_id" ref="om_hospital.model_hospital_patient"/>
         <field name="domain_force">[('create_uid','=',user.id)]</field>
     </record>
-
 
 
 </odoo>

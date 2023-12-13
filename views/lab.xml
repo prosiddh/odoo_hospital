@@ -22,7 +22,8 @@
                             <field name="name"/>
                         </group>
                         <group>
-                            <field name="user_id"/>
+                            <field name="user_id" groups="om_hospital.hospital_lab_manager"/>
+<!--                            <field name="user_id" />-->
                         </group>
 
                     </group>
@@ -38,7 +39,5 @@
         <field name="res_model">hospital.lab</field>
         <field name="view_mode">tree,form</field>
     </record>
-
-
 
 </odoo>

@@ -25,6 +25,7 @@ class HospitalPatient(models.Model):
     doctor_id = fields.Many2one('hospital.doctor', string="Doctor")
     multi_doc = fields.Many2many('hospital.doctor', string="Add. Doctor")
     description = fields.Text(string="Any Special Description ?")
+    company_id = fields.Many2one('res.company',string="Company" ,default=lambda self: self.env.user.company_id)
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -55,11 +56,11 @@ class HospitalPatient(models.Model):
 
     @api.onchange('age')
     def _onchange_age(self):
-        pass
-        # if self.age <= 10:
-        #     self.is_child = True
-        # else:
-        #     self.is_child = False
+        # pass
+        if self.age <= 10:
+            self.is_child = True
+        else:
+            self.is_child = False
 
 
     def wizard_appointment(self):

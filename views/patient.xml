@@ -35,6 +35,7 @@
 
                         <group>
                             <field name="doctor_id" options="{'no_open': True, 'no_create':True}"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
                         </group>
                         <notebook>
                             <page string="Any Special Notes/Description ?">
@@ -74,10 +75,11 @@
                 <field name="appointment_date"/>
                 <field name="priority"/>
                 <field name="doctor_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
                 <field name="multi_doc"/>
                 <field name="description"/>
             </tree>
-                <button name="show_sales" string="Show Sales" class="oe_highlight" type="object"/>
+            <button name="show_sales" string="Show Sales" class="oe_highlight" type="object"/>
         </field>
     </record>
 

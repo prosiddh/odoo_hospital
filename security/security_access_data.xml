@@ -76,20 +76,28 @@
 
 
     <!-- ================================================================================================================ -->
-    <record id="access_for_doctor" model="ir.rule">
-        <field name="name">Access Patient List</field>
-        <field name="model_id" ref="om_hospital.model_hospital_doctor"/>
-        <field name="domain_force">[('create_uid','=',user.id)]</field>
-    </record>
+<!--    <record id="access_for_doctor" model="ir.rule">-->
+<!--        <field name="name">Access Patient List</field>-->
+<!--        <field name="model_id" ref="om_hospital.model_hospital_doctor"/>-->
+<!--        <field name="domain_force">[('create_uid','=',user.id)]</field>-->
+<!--    </record>-->
     <!-- ================================================================================================================ -->
 
     <!-- ================================================================================================================ -->
-    <record id="access_for_patient" model="ir.rule">
-        <field name="name">Access Patient List</field>
+<!--    <record id="access_for_patient" model="ir.rule">-->
+<!--        <field name="name">Access Patient List</field>-->
+<!--        <field name="model_id" ref="om_hospital.model_hospital_patient"/>-->
+<!--        <field name="domain_force">[('create_uid','=',user.id)]</field>-->
+<!--    </record>-->
+    <!-- ================================================================================================================ -->
+
+    <!-- ================================================================================================================ -->
+    <!--record rule for company-->
+    <record id="patient_multi_company_rule" model="ir.rule">
+        <field name="name">Patient Multi Company Rule</field>
         <field name="model_id" ref="om_hospital.model_hospital_patient"/>
-        <field name="domain_force">[('create_uid','=',user.id)]</field>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('company_id','in', company_ids)]</field>
     </record>
     <!-- ================================================================================================================ -->
-
-
 </odoo>

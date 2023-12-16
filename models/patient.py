@@ -10,7 +10,7 @@ class HospitalPatient(models.Model):
 
     name = fields.Char(string='Name', tracking=True)
     age = fields.Integer(string='Age', tracking=True)
-    is_child = fields.Boolean(string='Is Child ?', tracking=True)
+    is_child = fields.Boolean(string='Is Child ?', default="False",tracking=True)
     notes = fields.Text(string="Notes", tracking=True)
     gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('others', 'Other')], string="Gender",
                               tracking=True)
@@ -21,7 +21,7 @@ class HospitalPatient(models.Model):
         string='Priority',
         help='Select the priority level for the model.'
     )
-    ref = fields.Char(string="Reference",readonly=True, copy=False, default=lambda self: _('New'))
+    ref = fields.Char(string="Reference",readonly=True,index=True, copy=False,default=lambda self: _('New'))
 
     doctor_id = fields.Many2one('hospital.doctor', string="Doctor")
     multi_doc = fields.Many2many('hospital.doctor', string="Add. Doctor")
@@ -29,19 +29,34 @@ class HospitalPatient(models.Model):
     # registration_time = fields.Char(string='Last Updated on', automatic=True, readonly=True)
     registration_time = fields.Datetime(default=fields.datetime.today())
     company_id = fields.Many2one('res.company',string="Company" ,default=lambda self: self.env.user.company_id)
+    patient_image = fields.Image(string="Image")
 
-    @api.model_create_multi
+
+    @api.model
     def create(self, vals_list):
-        for vals in vals_list:
-            if vals.get('ref', _('New')) == _('New'):
-                next_ref = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New')
-                print(f"Generated next reference: {next_ref}")
-                vals['ref'] = next_ref
+        if vals_list.get('ref','New') == 'New':
+            vals_list['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient.sequence') or 'New'
+            result = super(HospitalPatient,self).create(vals_list)
+            return result
 
-        print(f"Values after modification: {vals_list}")
+
+
+
+
+
+
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     for vals in vals_list:
+    #         if vals.get('ref', _('New')) == _('New'):
+    #             next_ref = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New')
+    #             print(f"Generated next reference: {next_ref}")
+    #             vals['ref'] = next_ref
+    #
+    #     print(f"Values after modification: {vals_list}")
     #         # vals['ref'] = self.env['ir.sequence'].next_by_code(self,'hospital.patient') or '/'
     #         # print(vals['ref'])
-        return super(HospitalPatient, self).create(vals_list)
+    #     return super(HospitalPatient, self).create(vals_list)
 
     @api.constrains('is_child', 'age')
     def _check_child_age(self):

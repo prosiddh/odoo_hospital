@@ -9,6 +9,7 @@ class HospitalDoctor(models.Model):
     name = fields.Char(string='Name', required = True, tracking=True)
     gender = fields.Selection([('male','Male'),('female','Female'),('others','Others')], string = "Gender", tracking = True)
     ref = fields.Char(string="Reference", required=True)
+    image=fields.Image(string="Image")
 
     def name_get(self):
         res = []

@@ -7,10 +7,11 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
                     <group>
+                        <field name="ref"/>
                         <field name="name"/>
                         <field name="gender"/>
-                        <field name="ref"/>
                     </group>
                 </sheet>
 
@@ -45,6 +46,6 @@
               name="Doctors"
               parent="menu_hospital_master_data"
               action="action_hospital_doctor"
-              sequence="13" />
+              sequence="13"/>
 
 </odoo>

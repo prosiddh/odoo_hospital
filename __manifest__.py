@@ -15,7 +15,7 @@
         'views\lab.xml',
         'wizards\cancel_appointment.xml',
         'reports\patient_template.xml',
-        'reports\hospital_report.xml',
+        'reports\hospital_reports.xml',
     ],
     'installable':True,
     'application':True,

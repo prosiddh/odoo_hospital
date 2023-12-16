@@ -1,4 +1,5 @@
 from odoo import api, fields, models, _
+import datetime
 from odoo.exceptions import ValidationError
 
 
@@ -24,7 +25,9 @@ class HospitalPatient(models.Model):
 
     doctor_id = fields.Many2one('hospital.doctor', string="Doctor")
     multi_doc = fields.Many2many('hospital.doctor', string="Add. Doctor")
-    description = fields.Text(string="Any Special Description ?")
+    # description = fields.Text(string="Any Special Description ?")
+    # registration_time = fields.Char(string='Last Updated on', automatic=True, readonly=True)
+    registration_time = fields.Datetime(default=fields.datetime.today())
     company_id = fields.Many2one('res.company',string="Company" ,default=lambda self: self.env.user.company_id)
 
     @api.model_create_multi

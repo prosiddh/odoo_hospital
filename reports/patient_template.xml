@@ -11,6 +11,8 @@
                             <table class="table table-condensed">
                                 <thead>
                                     <tr>
+                                        <th>Normal Image</th>
+                                        <th>Div Image</th>
                                         <th>Name</th>
                                         <th>Age</th>
                                         <th>Gender</th>
@@ -23,6 +25,29 @@
 
                                 <tbody>
                                     <tr>
+                                        <td>
+<!--                                            static image-->
+<!--                                            <img src="/om_hospital/static/dhrupal.jpg"-->
+<!--                                            alt="Image is not loading" height="50" width="50"/>-->
+
+<!--                                            dynamic image-->
+
+                                            <img t-att-src="image_data_uri(o.patient_image)"
+                                                 t-if="o.patient_image"
+                                                 alt="Not Found"
+                                                 height="50" width="50"/>
+
+<!--                                            <img t-attf-src="data:image/jpeg;base64,#{o.patient_image}"-->
+<!--                                                 t-if="o.patient_image"-->
+<!--                                                 alt="Not Found"/>-->
+
+                                        </td>
+
+                                        <td>
+                                            <div t-field="o.patient_image"
+                                            t-options="{'widget':'image','img_style':'width:50px; height:50px;','width':50,'height':50}"/>
+                                        </td>
+
                                         <td>
                                             <t t-esc="o.name"/>
                                         </td>

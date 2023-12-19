@@ -6,3 +6,8 @@ class HospitalLab(models.Model):
 
     name = fields.Char(string="Name" , required=True)
     user_id = fields.Many2one('res.users',string="Responsible")
+
+class newLab(models.Model):
+    _inherit="hospital.lab"
+
+    age_of_lab=fields.Integer(string="Age of Lab")

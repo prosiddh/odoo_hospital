@@ -24,6 +24,7 @@
                         <group>
 <!--                            <field name="user_id" groups="om_hospital.hospital_lab_manager"/>-->
                             <field name="user_id" />
+                            <field name="age_of_lab" />
                         </group>
 
                     </group>
